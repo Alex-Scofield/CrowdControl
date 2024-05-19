@@ -11,15 +11,6 @@
 #include<vector>
 
 
-/** CONSTANTS **/
-double const WIDTH = 100;
-double const HEIGHT = 100;
-
-double const EXIT_X = 100 / 2;
-double const EXIT_WIDTH = WIDTH / 4;
-double const EXIT_Y = 100;
-
-
 /**
  * @brief Represents a general object in the simulation
  */
@@ -35,10 +26,10 @@ class Object {
 class Ball : Object {
     private:
         static double const DELTA = 0.01;
-        std::array<double, 2> velocity(std::vector<Object> objects);
+        std::array<double, 2> velocity(std::vector<Object> objects, double exit_x, double exit_y);
     public:
         bool checkCollision(Ball ball) override;
-        void updatePosition(std::vector<Object> objects);
+        void updatePosition(std::vector<Object> objects, double exit_x, double exit_y);
 };
 
 
