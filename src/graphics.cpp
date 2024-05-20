@@ -31,17 +31,29 @@ void displayCircle(double radius, double pos_x, double pos_y) {
     glEnd();
 }
 
+void displayBall(double radius, double pos_x, double pos_y) {
+    glColor3f(1.0f, 0.0f, 0.0f);
+    displayCircle(radius, pos_x, pos_y);
+}
+
+
+void displayObstacle(double radius, double pos_x, double pos_y) {
+    glColor3f(0.0f, 0.0f, 1.0f);
+    displayCircle(radius, pos_x, pos_y);
+}
+
 
 void display() {
     model_ptr->step();
     // Clear the color buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Set the color to red
-    glColor3f(1.0f, 0.0f, 0.0f);
-
     for(Ball ball : model_ptr->getBalls()) {
         displayCircle(ball.getRadius(), ball.getPosX(), ball.getPosY());
+    }
+
+    for (CircleObstacle circle_obstacle : model_ptr->getCircleObstacles()){
+        displayObstacle(circle_obstacle.getRadius(), circle_obstacle.getPosX(), circle_obstacle.getPosY());
     }
 
     // Swap buffers (double buffering)

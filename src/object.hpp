@@ -51,17 +51,18 @@ class Ball : Object {
         double getRadius() { return radius; }
         double getPosX() { return pos_x; }
         double getPosY() { return pos_y; }
+    
         void cr() { pos_x += 0.001; }
 };
 
-
-/**
- * @brief Represents an obstacle in the room
- * 
- */
-class Obstacle : Object {
+class CircleObstacle : Object {
+    private:
+        double radius; // Size of the ball
     public:
-        //bool checkCollision(Ball &ball) override { return 0; }
+        CircleObstacle(double radius, double pos_x, double pos_y) : radius(radius) {this->pos_x = pos_x; this->pos_y = pos_y;}
+        double getRadius() { return radius; }
+        double getPosX() { return pos_x; }
+        double getPosY() { return pos_y; }
 };
 
 #endif

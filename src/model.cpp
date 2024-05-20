@@ -14,13 +14,17 @@ Model::Model(int nballes, int nobstacles) {
         Ball ball = Ball(5, 10 * i, 10 * i);
         balls.push_back(ball);
     }
-    obstacles = {};
+    circle_obstacles = {};
+    for(int i = 0; i < nobstacles; i++) {
+        CircleObstacle circle_obstacle = CircleObstacle(10, 60 * i, 80);
+        circle_obstacles.push_back(circle_obstacle);
+    }
 }
 
 bool Model::step() {
     //if(niter >= ITER_MAX) {return true;}
     for (int i = 0; i < balls.size(); i++) {
-        balls[0].cr();
+        balls[i].cr();
     }
     return true;
 }
