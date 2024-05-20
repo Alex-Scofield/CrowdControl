@@ -11,11 +11,11 @@
  */
 class Model {
     private:
-        static double const WIDTH = 100;
-        static double const HEIGHT = 100;
-        static double const EXIT_X = 100 / 2;
-        static double const EXIT_WIDTH = WIDTH / 4;
-        static double const EXIT_Y = 100;
+        constexpr static double WIDTH = 100;
+        constexpr static double HEIGHT = 100;
+        constexpr static double EXIT_X = 100 / 2;
+        constexpr static double EXIT_WIDTH = WIDTH / 4;
+        constexpr static double EXIT_Y = 100;
 
         std::vector<Ball> balls;
         std::vector<Obstacle> obstacles;
