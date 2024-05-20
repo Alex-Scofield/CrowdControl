@@ -18,7 +18,6 @@ void displayCircle(double radius, double pos_x, double pos_y) {
     radius = 2 * radius / (model_ptr->WIDTH + model_ptr->HEIGHT);
     pos_x = pos_x / model_ptr->WIDTH;
     pos_y = pos_y / model_ptr->HEIGHT;
-
     int numSegments = 100; // Number of line segments to approximate the circle
     float angleIncrement = 2.0f * 3.14159f / numSegments;
 

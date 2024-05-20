@@ -19,8 +19,8 @@ Model::Model(int nballes, int nobstacles) {
 
 bool Model::step() {
     //if(niter >= ITER_MAX) {return true;}
-    for(Ball ball : balls) {
-        ball.cr();
+    for (int i = 0; i < balls.size(); i++) {
+        balls[0].cr();
     }
     return true;
 }

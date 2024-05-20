@@ -51,7 +51,7 @@ class Ball : Object {
         double getRadius() { return radius; }
         double getPosX() { return pos_x; }
         double getPosY() { return pos_y; }
-        void cr() { pos_x += 0.1; }
+        void cr() { pos_x += 0.001; }
 };
 
 
