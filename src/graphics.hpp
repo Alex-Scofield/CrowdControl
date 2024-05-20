@@ -3,11 +3,6 @@
 
 #include "model.hpp"
 
-/**
- * @brief Displays the given model
- * 
- * @param model Model to be displayed
- */
-void graphics(Model &model);
+void graphics(int argc, char** argv, Model *model);
 
 #endif

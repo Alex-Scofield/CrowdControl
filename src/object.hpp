@@ -21,6 +21,7 @@ class Object {
     protected:
         double pos_x;
         double pos_y;
+        Object() : pos_x(0), pos_y(0) {}
     public:
         /**
          * @brief Checks wether the current object is touching a given ball
@@ -29,7 +30,7 @@ class Object {
          * @return true if the object is colliding with the given ball
          * @return false otherwise
          */
-        virtual bool checkCollision(Ball &ball);
+        //virtual bool checkCollision(Ball &ball);
 };
 
 
@@ -40,11 +41,17 @@ class Object {
 class Ball : Object {
     private:
         double radius; // Size of the ball
-        constexpr static double DELTA = 0.01; // Time step to be used to calculate ball's movement
+        constexpr static double DELTA = 10; // Time step to be used to calculate ball's movement
         std::array<double, 2> velocity(std::vector<Object> objects, double exit_x, double exit_y);
     public:
-        bool checkCollision(Ball &ball) override { return 0; }
+        Ball(double radius, double pos_x, double pos_y) : radius(radius) {this->pos_x = pos_x; this->pos_y = pos_y;}
+        //bool checkCollision(Ball &ball) override { return 0; }
         void updatePosition(std::vector<Object> objects, double exit_x, double exit_y);
+
+        double getRadius() { return radius; }
+        double getPosX() { return pos_x; }
+        double getPosY() { return pos_y; }
+        void cr() { pos_x += 0.1; }
 };
 
 
@@ -54,7 +61,7 @@ class Ball : Object {
  */
 class Obstacle : Object {
     public:
-        bool checkCollision(Ball &ball) override { return 0; }
+        //bool checkCollision(Ball &ball) override { return 0; }
 };
 
 #endif

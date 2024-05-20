@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
 LDFLAGS = -Llib -lopengl32 -lglu32 -lfreeglut
 
 # Define the target executable
-TARGET = Simulation
+TARGET = simulation
 
 # Define the source directory
 SRCDIR = src
@@ -31,8 +31,18 @@ $(BINDIR)/$(TARGET): $(OBJS)
 	rm -f $(OBJS)
 
 # Rule to build object files from source files
-$(OBJS): $(SRCS)
+$(SRCDIR)/main.o :$(SRCDIR)/main.cpp $(SRCDIR)/graphics.hpp $(SRCDIR)/model.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(SRCDIR)/graphics.o: $(SRCDIR)/graphics.cpp $(SRCDIR)/graphics.hpp $(SRCDIR)/model.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(SRCDIR)/model.o: $(SRCDIR)/model.cpp $(SRCDIR)/model.hpp $(SRCDIR)/object.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(SRCDIR)/object.o: $(SRCDIR)/object.cpp $(SRCDIR)/object.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 
 # Clean up build files
 clean:

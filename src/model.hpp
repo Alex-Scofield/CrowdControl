@@ -11,24 +11,39 @@
  */
 class Model {
     private:
+        std::vector<Ball> balls;
+        std::vector<Obstacle> obstacles;
+        int niter; // Current step
+        static const int ITER_MAX = 1000; // Maximum number of iterations in the simulation
+
+    public:
         constexpr static double WIDTH = 100;
         constexpr static double HEIGHT = 100;
         constexpr static double EXIT_X = 100 / 2;
         constexpr static double EXIT_WIDTH = WIDTH / 4;
         constexpr static double EXIT_Y = 100;
+        
+        /**
+         * @brief Construct a new Model object
+         * 
+         * @param nballs Number of balls to be placed
+         * @param nobstacles Number of obstacles to be placed
+         */
+        Model(int nballs, int nobstacles);
 
-        std::vector<Ball> balls;
-        std::vector<Obstacle> obstacles;
-        int niter = 0; // Current step
-        static const int ITER_MAX = 1000; // Maximum number of iterations in the simulation
-
-    public:
         /**
          * @brief Returns all of the objects (balls and obstacles) present in the simulation
          * 
          * @return std::vector<Object> 
          */
         std::vector<Object> getObjects();
+
+        /**
+         * @brief Get the balls concerned by the simulation
+         * 
+         * @return std::vector<Ball> 
+         */
+        std::vector<Ball> getBalls() { return balls; }
 
         /**
          * @brief Performs a step in the simulation
