@@ -17,7 +17,7 @@ SRCDIR = src
 BINDIR = bin
 
 # Define the source files
-SRCS = $(SRCDIR)/main.cpp
+SRCS = $(SRCDIR)/main.cpp $(SRCDIR)/graphics.cpp $(SRCDIR)/model.cpp $(SRCDIR)/object.cpp 
 
 # Define the object files
 OBJS = $(SRCS:.cpp=.o)
@@ -28,7 +28,7 @@ all: $(BINDIR)/$(TARGET)
 # Rule to build the target executable
 $(BINDIR)/$(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
-	cp freeglut.dll $(BINDIR)/
+	rm -f $(OBJS)
 
 # Rule to build object files from source files
 $(OBJS): $(SRCS)
