@@ -41,7 +41,7 @@ class Object {
 class Ball : Object {
     private:
         double radius; // Size of the ball
-        constexpr static double DELTA = 10; // Time step to be used to calculate ball's movement
+        constexpr static double DELTA = 0.001; // Time step to be used to calculate ball's movement
         std::array<double, 2> velocity(std::vector<Object> objects, double exit_x, double exit_y);
     public:
         Ball(double radius, double pos_x, double pos_y) : radius(radius) {this->pos_x = pos_x; this->pos_y = pos_y;}

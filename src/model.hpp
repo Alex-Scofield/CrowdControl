@@ -2,6 +2,7 @@
 #define MODEL_HPP
 
 #include<vector>
+
 #include "object.hpp"
 
 
@@ -38,7 +39,19 @@ class Model {
          */
         std::vector<Ball> getBalls() { return balls; }
 
+        /**
+         * @brief Get the circle obstacles
+         * 
+         * @return std::vector<CircleObstacle> 
+         */
         std::vector<CircleObstacle> getCircleObstacles() { return circle_obstacles; }
+
+        /**
+         * @brief Returns all of the model's objects
+         * 
+         * @return std::vector<Object*> 
+         */
+        std::vector<Object> getObjects();
 
         /**
          * @brief Performs a step in the simulation

@@ -7,6 +7,12 @@
 #include <vector>
 
 #include "model.hpp"
+#include "object.hpp"
+
+std::vector<Object> Model::getObjects() {
+    std::vector<Object> n;
+    return n;
+}
 
 Model::Model(int nballes, int nobstacles) {
     niter = 0;
@@ -24,7 +30,7 @@ Model::Model(int nballes, int nobstacles) {
 bool Model::step() {
     //if(niter >= ITER_MAX) {return true;}
     for (int i = 0; i < balls.size(); i++) {
-        balls[i].cr();
+        balls[i].updatePosition(getObjects(), EXIT_X, EXIT_Y);
     }
     return true;
 }
