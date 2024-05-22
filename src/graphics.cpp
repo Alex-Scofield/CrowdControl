@@ -7,12 +7,13 @@
 
 #include <GL/glut.h>
 #include <math.h>
+#include <memory>
 
 #include "graphics.hpp"
 #include "model.hpp"
 
 
-Model *model_ptr = NULL; // Global variable containing the model to be displayed
+std::unique_ptr<Model> model_ptr = nullptr; // Global variable containing the model to be displayed
 
 void displayCircle(double radius, double pos_x, double pos_y) {
     radius = 2 * radius / (model_ptr->WIDTH + model_ptr->HEIGHT);
@@ -65,8 +66,8 @@ void reshape(int width, int height) {
     glViewport(0, 0, width, height);
 }
 
-void graphics(int argc, char** argv, Model *model) {
-    model_ptr = model;
+void graphics(int argc, char** argv, Model &model) {
+    model_ptr = std::make_unique<Model>(model);
     // Initialize GLUT
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);

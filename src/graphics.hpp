@@ -3,6 +3,6 @@
 
 #include "model.hpp"
 
-void graphics(int argc, char** argv, Model *model);
+void graphics(int argc, char** argv, Model &model);
 
 #endif
