@@ -9,6 +9,7 @@
 
 #include<array>
 #include<vector>
+#include<memory>
 
 
 // Forward declaration
@@ -21,16 +22,16 @@ class Object {
     protected:
         double pos_x;
         double pos_y;
-        Object() : pos_x(0), pos_y(0) {}
+        double radius; // Size of the ball
+
     public:
-        /**
-         * @brief Checks wether the current object is touching a given ball
-         * 
-         * @param ball 
-         * @return true if the object is colliding with the given ball
-         * @return false otherwise
-         */
-        //virtual bool checkCollision(Ball &ball);
+        Object(double radius, double pos_x, double pos_y) : radius(radius) {this->pos_x = pos_x; this->pos_y = pos_y;}
+        double getRadius() { return radius; }
+        double getPosX() { return pos_x; }
+        double getPosY() { return pos_y; }
+
+        bool checkCollision(Ball &ball);
+        void updateVelocityCollidee(Ball &ball, std::array<double, 2> &velocity);
 };
 
 
@@ -38,28 +39,14 @@ class Object {
  * @brief Represents a ball trying to escape a room
  * 
  */
-class Ball : Object {
+class Ball : public Object {
     private:
-        double radius; // Size of the ball
-        constexpr static double DELTA = 0.001; // Time step to be used to calculate ball's movement
-        std::array<double, 2> velocity(std::vector<Object> objects, double exit_x, double exit_y);
-    public:
-        Ball(double radius, double pos_x, double pos_y) : radius(radius) {this->pos_x = pos_x; this->pos_y = pos_y;}
-        //bool checkCollision(Ball &ball) override { return 0; }
-        void updatePosition(std::vector<Object> objects, double exit_x, double exit_y);
+        constexpr static double DELTA = 0.03; // Time step to be used to calculate ball's movement
+        std::array<double, 2> velocity(std::vector<std::shared_ptr<Object>> objects, double exit_x, double exit_y);
 
-        double getRadius() { return radius; }
-        double getPosX() { return pos_x; }
-        double getPosY() { return pos_y; }
-    
-        void cr() { pos_x += 0.001; }
-};
-
-class CircleObstacle : Object {
-    private:
-        double radius; // Size of the ball
     public:
-        CircleObstacle(double radius, double pos_x, double pos_y) : radius(radius) {this->pos_x = pos_x; this->pos_y = pos_y;}
+        Ball(double radius, double pos_x, double pos_y) : Object(radius, pos_x, pos_y) {}
+        void updatePosition(std::vector<std::shared_ptr<Object>> objects, double exit_x, double exit_y);
         double getRadius() { return radius; }
         double getPosX() { return pos_x; }
         double getPosY() { return pos_y; }

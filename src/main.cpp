@@ -9,7 +9,7 @@
 #include "graphics.hpp"
 
 int main(int argc, char** argv) {
-    Model model = Model(5, 2);
+    Model model = Model(80, 5);
     graphics(argc, argv, model);
     return 0;
 }

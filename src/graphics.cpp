@@ -53,7 +53,7 @@ void display() {
         displayCircle(ball.getRadius(), ball.getPosX(), ball.getPosY());
     }
 
-    for (CircleObstacle circle_obstacle : model_ptr->getCircleObstacles()){
+    for (Object circle_obstacle : model_ptr->getCircleObstacles()){
         displayObstacle(circle_obstacle.getRadius(), circle_obstacle.getPosX(), circle_obstacle.getPosY());
     }
 

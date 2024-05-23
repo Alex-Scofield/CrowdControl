@@ -13,7 +13,7 @@
 class Model {
     private:
         std::vector<Ball> balls;
-        std::vector<CircleObstacle> circle_obstacles;
+        std::vector<Object> circle_obstacles;
         int niter; // Current step
         static const int ITER_MAX = 1000; // Maximum number of iterations in the simulation
 
@@ -44,14 +44,14 @@ class Model {
          * 
          * @return std::vector<CircleObstacle> 
          */
-        std::vector<CircleObstacle> getCircleObstacles() { return circle_obstacles; }
+        std::vector<Object> getCircleObstacles() { return circle_obstacles; }
 
         /**
          * @brief Returns all of the model's objects
          * 
-         * @return std::vector<Object*> 
+         * @return std::vector<std::shared_ptr<Object>>
          */
-        std::vector<Object> getObjects();
+        std::vector<std::shared_ptr<Object>> getObjects();
 
         /**
          * @brief Performs a step in the simulation
